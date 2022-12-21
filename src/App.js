@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
+const styles = {
+  color: 'blue',
+  fontStyle: 'italic',
+}
+
+const str = <h1 style={styles}> Learn JSX</h1>
+
+function getGreeting(name) {
+  return `Hello, ${name}`;
+}
+
+function handleEvent(e){
+  alert('Button Clicked');
+  console.log(e);
+}
+
+const error = true;
+const items = [
+  'Bread', 'Milk', 'Eggs'
+]
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Grocery List:<ul>
+        {items.map(item => <li>{item}</li>)}
+      </ul>
+      <div>
+        <FunctionComponent />
+        <ClassComponent />
+      </div>
+      <button onClick={handleEvent}>Is Button</button>
     </div>
+
   );
+}
+
+function FunctionComponent() {
+  return <h1> This is a FunctionComponent.</h1>
+}
+class ClassComponent extends Component {
+  render() {
+    return <h1> This is a Class Component.</h1>
+  }
 }
 
 export default App;
